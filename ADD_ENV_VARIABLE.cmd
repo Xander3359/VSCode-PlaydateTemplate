@@ -3,10 +3,10 @@
 :: Replace YOUR CUSTOM SDK PATH HERE with your custom path.
 :: Use \ as separator
 :: Must not end with \
-set SDKPATH="YOUR CUSTOM SDK PATH HERE"
+set SDKPATH="M:\Users\Xander-chan\Documents\PlaydateSDK"
 
 
-if %SDKPATH% == "YOUR CUSTOM SDK PATH HERE" (
+if %SDKPATH% == "M:\Users\Xander-chan\Documents\PlaydateSDK" (
 	FOR /F "tokens=2* skip=2" %%a in ('reg query "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do set SDKPATH=%%b\PlaydateSDK
 )
 :: BatchGotAdmin
