@@ -5,7 +5,7 @@ import "CoreLibs/object"
 
 -- Define circle parameters
 local circleRadius = 50
-local circleCenter = { x = 160, y = 120 }
+local circleCenter = { x = 200, y = 120 }
 
 -- Define object parameters
 local objectRadius = 10
@@ -32,17 +32,9 @@ function playdate.update()
     local objectX = circleCenter.x + objectDistance * math.cos(objectAngle)
     local objectY = circleCenter.y + objectDistance * math.sin(objectAngle)
 
-    -- Draw the starfield background
-    playdate.display.clear()
-    for i = 1, numStars do
-        playdate.display.point(stars[i].x, stars[i].y)
-    end
-
     -- Draw the circle
-    playdate.display.circle(circleCenter.x, circleCenter.y, circleRadius)
-    playdate.display.stroke()
+    playdate.graphics.drawCircleAtPoint(circleCenter.x, circleCenter.y, circleRadius)
 
     -- Draw the controllable object
-    playdate.display.circle(objectX, objectY, objectRadius)
-    playdate.display.fill()
+    playdate.graphics.fillCircleAtPoint(objectX, objectY, objectRadius)
 end
