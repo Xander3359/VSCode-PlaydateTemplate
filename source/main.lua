@@ -1,28 +1,36 @@
-import "dvd" -- DEMO
-local dvd = dvd(1, -1) -- DEMO
+import "CoreLibs/graphics"
 
+local pd <const> = playdate
 local gfx <const> = playdate.graphics
-local font = gfx.font.new('font/Mini Sans 2X') -- DEMO
 
-local function loadGame()
-	playdate.display.setRefreshRate(50) -- Sets framerate to 50 fps
-	math.randomseed(playdate.getSecondsSinceEpoch()) -- seed for math.random
-	gfx.setFont(font) -- DEMO
-end
+local playerX, playerY = 200, 120
+local playerRadius = 10
 
-local function updateGame()
-	dvd:update() -- DEMO
-end
+local PlayerSpeed = 3 -- Baseline speed before any modifiers
+local CurrentPlayerSpeed = PlayerSpeed
 
-local function drawGame()
-	gfx.clear() -- Clears the screen
-	dvd:draw() -- DEMO
-end
+function pd.update()
+	gfx.clear()
+	if(pd.buttonIsPressed(pd.kButtonUp)) then -- Up and down are inverted for some reason
+		playerY -= CurrentPlayerSpeed
+	end
+	if(pd.buttonIsPressed(playdate.kButtonDown)) then -- Up and down are inverted for some reason
+		playerY += CurrentPlayerSpeed
+	end
+	if(pd.buttonIsPressed(pd.kButtonRight)) then
+		playerX += CurrentPlayerSpeed
+	end
+	if(pd.buttonIsPressed(pd.kButtonLeft)) then
+		playerX -= CurrentPlayerSpeed
+	end
 
-loadGame()
+	if(pd.buttonIsPressed(pd.kButtonB)) then
+		CurrentPlayerSpeed = PlayerSpeed * 2
+	end
+	if(pd.buttonIsPressed(pd.kButtonA)) then
+		CurrentPlayerSpeed = PlayerSpeed / 2
+	end
 
-function playdate.update()
-	updateGame()
-	drawGame()
-	playdate.drawFPS(0,0) -- FPS widget
+
+	gfx.fillCircleAtPoint(playerX, playerY, playerRadius)
 end
