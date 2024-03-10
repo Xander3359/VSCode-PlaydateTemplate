@@ -9,7 +9,7 @@ if(a) then
 	print(a)
 end
 
-if(kButtonA) then
+if(playdate.buttonIsPressed(playdate.kButtonA)) then
 	a = 0
 end
 
