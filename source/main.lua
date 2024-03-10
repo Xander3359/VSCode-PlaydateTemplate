@@ -1,17 +1,15 @@
 a = 1
 b = 10
 
+-- addition:		 a + b
+-- substraction:	 a - b
+-- multiplication:	 a * b
+-- division:		 a / b
+-- exponent:		 a ^ b
+-- negative:		 -a
+-- modulus: 		 a % b,	shows how much is left after a division (55 % 10 = 5)
 
-print(a)
-print(b)
 
-if a then
-	print(a)
-end
-
-if(not a) then
-	print("no A")
-end
 
 function playdate.update()
 	if playdate.buttonIsPressed(playdate.kButtonA) then
