@@ -4,6 +4,7 @@ import "CoreLibs/timer"
 import "CoreLibs/object"
 
 import "circle"
+import "player_sprite"
 
 -- screenCenter is the middle coordinate of our screen (Which is 400 x 240 at maximum)
 local screenCenter = { x = 200, y = 120 }
@@ -40,9 +41,10 @@ function playdate.update()
 
     print(crankAngle)
 
-    -- Calculate object position around the circle
+    -- Calculate player position around the circle
     local objectX = screenCenter.x + circleRadius * math.cos(crankAngle)
     local objectY = screenCenter.y + circleRadius * math.sin(crankAngle)
+    -- Determines our rotation around the circle
 
     -- Draw the controllable object
     playdate.graphics.fillCircleAtPoint(objectX, objectY, objectRadius)
